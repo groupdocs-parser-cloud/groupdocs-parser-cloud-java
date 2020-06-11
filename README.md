@@ -37,7 +37,7 @@ Add following repository and dependency to your project's POM
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-parser-cloud</artifactId>
-    <version>19.11</version>
+    <version>20.6</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/groupdocs-parser-cloud-19.11.jar
+* target/groupdocs-parser-cloud-20.6.jar
 * target/lib/*.jar
 
 ## Getting Started
