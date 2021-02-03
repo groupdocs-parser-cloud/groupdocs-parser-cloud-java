@@ -1,7 +1,9 @@
 ![](https://img.shields.io/badge/api-v1.0-lightgrey) [![GitHub license](https://img.shields.io/github/license/groupdocs-parser-cloud/groupdocs-parser-cloud-java)](https://github.com/groupdocs-parser-cloud/groupdocs-parser-cloud-java/blob/master/LICENSE)
 
 # GroupDocs.Parser Cloud SDK for Java
-This repository contains GroupDocs.Parser Cloud SDK for Java source code. This SDK allows you to work with GroupDocs.Parser Cloud REST APIs in your Java applications.
+GroupDocs.Parser Cloud SDK for Java wraps GroupDocs.Parser RESTful APIs so you may integrate **Document Parser** features in your own apps with zero initial cost.
+
+GroupDocs.Parser Cloud API allows the developers to parse documents such as invoices, receipts or financial tables to extract text, images and metadata from 40+ popular document formats.
 
 ## Cloud Document Parser Features
 
@@ -20,7 +22,6 @@ This repository contains GroupDocs.Parser Cloud SDK for Java source code. This S
 - Retrieve all images from a document and save them.
 - Obtain basic information about documents, archives, emails, and attachments, etc.
 - Extract data from a document contained inside a ZIP archive, email, or PDF portfolio.
-
 
 ## Parse Document By Template Supported Formats
 
@@ -124,33 +125,17 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-import com.groupdocs.cloud.parser.client.*;
-import com.groupdocs.cloud.parser.model.*;
-import com.groupdocs.cloud.parser.api.InfoApi;
+// Get Client Id and Client Secret from https://dashboard.groupdocs.cloud
+String MyClientId = "";
+String MyClientSecret = "";
 
-import java.util.*;
+// Create instance of the API
+Configuration configuration = new Configuration(MyClientId, MyClientSecret);
+InfoApi infoApi = new InfoApi(configuration);
 
-public class ApiExample {
-
-    public static void main(String[] args) {
-        //TODO: Get your AppSID and AppKey at https://dashboard.groupdocs.cloud (free registration is required).
-        String appSid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
-        String appKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-
-        Configuration configuration = new Configuration(appSid, appKey);
-
-        InfoApi infoApi = new InfoApi(configuration);
-
-        try {
-            FormatsResult response = infoApi.getSupportedFileFormats();
-            for (Format format : response.getFormats()) {
-                System.out.println(format.getFileFormat());
-            }
-        } catch (ApiException e) {
-            System.err.println("Failed to get supported file formats");
-            e.printStackTrace();
-        }
-    }
+FormatsResult response = infoApi.getSupportedFileFormats();
+for (Format format : response.getFormats()) {
+	System.out.println(format.getFileFormat());
 }
 ```
 
