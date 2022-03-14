@@ -193,4 +193,18 @@ public class ParserTextApiTests extends BaseApiTest {
                     ex.getMessage());
         }
     }
+
+    @Test
+    public void TestExtractText_Md() throws ApiException {
+        // Arrange
+        TextOptions options = new TextOptions();
+        options.setFileInfo(TestFiles.Md.ToFileInfo());
+        TextRequest request = new TextRequest(options);
+
+        // Act & Assert
+        TextResult result = parseApi.text(request);
+
+        assertNotNull(result);
+        assertEquals("# Test\r\rText for test:\r\r\tOne\r\tTwo\r\tSub1\rSub2\r\tThree\r\rBullets:\r\rA\rAA\rB\rC\f", result.getText());
+    }
 }

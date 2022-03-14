@@ -60,6 +60,44 @@ public class ParserContainerApiTests extends BaseApiTest {
     }
 
     @Test
+    public void TestGetContainerItemInfo_Rar() throws ApiException {
+        // Arrange
+        ContainerOptions options = new ContainerOptions();
+        options.setFileInfo(TestFiles.Rar.ToFileInfo());
+        ContainerRequest request = new ContainerRequest(options);
+
+        // Act & Assert
+        ContainerResult result = infoApi.container(request);
+
+        assertNotNull(result);
+        assertNotNull(result.getContainerItems());
+        assertEquals(2, result.getContainerItems().size());
+        List<String> names = Arrays.asList(new String[] { "sample.docx", "sample.pdf" });
+        for (ContainerItem item : result.getContainerItems()) {
+            assertTrue(names.contains(item.getName()));
+        }
+    }
+
+    @Test
+    public void TestGetContainerItemInfo_Tar() throws ApiException {
+        // Arrange
+        ContainerOptions options = new ContainerOptions();
+        options.setFileInfo(TestFiles.Tar.ToFileInfo());
+        ContainerRequest request = new ContainerRequest(options);
+
+        // Act & Assert
+        ContainerResult result = infoApi.container(request);
+
+        assertNotNull(result);
+        assertNotNull(result.getContainerItems());
+        assertEquals(5, result.getContainerItems().size());
+        List<String> names = Arrays.asList(new String[] { "sample.docx", "sample.pdf", "1200px-RedPandaFullBody.JPG", "images.pdf", "th.jpg"  });
+        for (ContainerItem item : result.getContainerItems()) {
+            assertTrue(names.contains(item.getName()));
+        }
+    }
+
+    @Test
     public void TestGetContainerItemInfo_FileNotFoundResult() {
         // Arrange
         ContainerOptions options = new ContainerOptions();

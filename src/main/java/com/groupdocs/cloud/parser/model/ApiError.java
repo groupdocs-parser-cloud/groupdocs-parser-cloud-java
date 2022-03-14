@@ -41,9 +41,17 @@ import io.swagger.annotations.ApiModelProperty;
 public class ApiError {
   @SerializedName("error")
   private Error error = null;
+  
+  @SerializedName("message")
+  private String message = null;
 
   public ApiError error(Error error) {
     this.error = error;
+    return this;
+  }
+  
+  public ApiError message(String message) {
+    this.message = message;
     return this;
   }
 
@@ -54,6 +62,15 @@ public class ApiError {
   @ApiModelProperty(value = "The API error.")
   public Error getError() {
     return error;
+  }
+  
+  /**
+   * The API error message.
+   * @return message
+   **/
+  @ApiModelProperty(value = "The API error message.")
+  public String getMessage() {
+    return message;
   }
 
   public void setError(Error error) {

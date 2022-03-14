@@ -38,6 +38,9 @@ public class TestFiles {
     public static TestFile FormattedDocument = new TestFile("formatted-document.docx", "words\\docx\\");
     public static TestFile EncodingDetection = new TestFile("encoding-detection.txt", "words\\txt\\");
     public static TestFile Zip = new TestFile("docx.zip", "containers\\archive\\");
+    public static TestFile Rar = new TestFile("sample.rar", "containers\\archive\\");
+    public static TestFile Tar = new TestFile("sample.tar", "containers\\archive\\");
+    public static TestFile Md = new TestFile("sample.md", "words\\docx\\");
     public static TestFile ZipWithEmailImagePdf = new TestFile("zip-eml-jpg-pdf.zip", "containers\\archive\\");
     public static TestFile JpegFile = new TestFile("document.jpeg", "image\\jpeg\\");
     public static TestFile ImageAndAttachment = new TestFile("embedded-image-and-attachment.eml", "email\\eml\\");
@@ -66,6 +69,9 @@ public class TestFiles {
         files.add(ImageAndAttachment);
         files.add(Pdf);
         files.add(PdfContainer);
+        files.add(Rar);
+        files.add(Tar);
+        files.add(Md);
         return files; 
     } 
 }

@@ -5,7 +5,7 @@ public class Config {
      * Get your AppSID and AppKey at https://dashboard.groupdocs.cloud/ (free
      * registration is required)
      */
-    public static String AppSID = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
-    public static String AppKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+    public static String AppSID = "XXXXXXXXX-XXXXXXX-XXXXXX";
+    public static String AppKey = "XXXXXXXXXXXXXXXXXXXXX";
     public static String ApiBaseUrl = "https://api.groupdocs.cloud";
 }
