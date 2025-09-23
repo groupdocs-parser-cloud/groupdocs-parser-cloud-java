@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,6 +47,8 @@ public class TestFiles {
     public static TestFile PdfContainer = new TestFile("PDF with attachements.pdf", "pdf\\");
     public static TestFile Pdf = new TestFile("template-document.pdf", "pdf\\");
     public static TestFile NotExist = new TestFile("NotExist.docx", "folder/");
+    public static TestFile Video = new TestFile("sample.avi", "video\\avi\\");
+    public static TestFile Barcodes = new TestFile("barcodes.docx", "words\\docx\\");
    
     
     static {

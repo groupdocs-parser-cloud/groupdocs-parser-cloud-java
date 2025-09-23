@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -117,7 +117,7 @@ public class ParserContainerApiTests extends BaseApiTest {
     public void GetContainerItemsInfo_UnsupportedFileType() {
         // Arrange
         ContainerOptions options = new ContainerOptions();
-        FileInfo fileInfo = TestFiles.FourPages.ToFileInfo();
+        FileInfo fileInfo = TestFiles.Video.ToFileInfo();
         options.setFileInfo(fileInfo);
         ContainerRequest request = new ContainerRequest(options);
 
@@ -126,7 +126,7 @@ public class ParserContainerApiTests extends BaseApiTest {
             infoApi.container(request);
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
-            assertEquals("The specified file 'words\\docx\\four-pages.docx' has type which is not currently supported.",
+            assertEquals("The specified file 'video\\avi\\sample.avi' has type which is not currently supported.",
                     ex.getMessage());
         }
     }

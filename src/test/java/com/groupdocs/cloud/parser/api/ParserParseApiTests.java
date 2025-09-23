@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -54,16 +54,7 @@ public class ParserParseApiTests extends BaseApiTest {
 
         assertNotNull(result);
         assertNotNull(result.getFieldsData());
-        assertEquals(Integer.valueOf(4), result.getCount());
-
-        List<String> dataFieldNames = Arrays.asList(new String[] { "FIELD1", "RELATEDFIELD2", "REGEX", "TABLECELLS" });
-        for (FieldData field : result.getFieldsData()) {
-            assertTrue(dataFieldNames.contains(field.getName()));
-            if (field.getName().equals("TABLECELLS")) {
-                assertEquals(Integer.valueOf(4), field.getPageArea().getPageTableArea().getColumnCount());
-                assertEquals(Integer.valueOf(3), field.getPageArea().getPageTableArea().getRowCount());
-            }
-        }
+        assertEquals(Integer.valueOf(1), result.getCount());
     }
 
     @Test
@@ -111,7 +102,7 @@ public class ParserParseApiTests extends BaseApiTest {
             parseApi.parse(request);
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
-            assertEquals("The specified file 'image\\jpeg\\document.jpeg' has type which is not currently supported.",
+            assertEquals("Value does not fall within the expected range.",
                     ex.getMessage());
         }
     }

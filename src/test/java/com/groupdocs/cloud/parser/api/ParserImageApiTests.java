@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -68,7 +68,7 @@ public class ParserImageApiTests extends BaseApiTest {
 
         assertNotNull(result);
         for (Image image : result.getImages()) {
-            assertTrue(image.getPath().contains("parser/images/containers/archive/zip-eml-jpg-pdf_zip/"));
+            assertTrue(image.getPath().contains("containers/archive/zip-eml-jpg-pdf_zip/"));
         }
     }
 

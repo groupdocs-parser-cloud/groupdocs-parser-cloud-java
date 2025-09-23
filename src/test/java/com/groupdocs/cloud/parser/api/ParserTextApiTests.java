@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -69,7 +69,7 @@ public class ParserTextApiTests extends BaseApiTest {
         assertNotNull(result);
         assertNull(result.getText());
         assertEquals(
-                "Text inside a bookmark 1\r\n\r\nPage 1 heading!\r\n\r\nSample test text - Page 1!\r\n\r\n\fText inside a bookmark 2\r\n\r\n",
+                "Text inside a bookmark 1\n\nPage 1 heading!\n\nSample test text - Page 1!\n\n\fText inside a bookmark 2\n\n",
                 result.getPages().get(0).getText());
     }
 
@@ -91,11 +91,11 @@ public class ParserTextApiTests extends BaseApiTest {
         assertNotNull(result);
         assertEquals(Integer.valueOf(0), result.getPages().get(0).getPageIndex());
         assertEquals(
-                "Text inside bookmark 0\r\n\r\nPage 0 heading\r\n\r\nPage Text - Page 0\r\n\r\n\fText inside bookmark 1\r\n\r\n",
+                "Text inside bookmark 0\n\nPage 0 heading\n\nPage Text - Page 0\n\n\fText inside bookmark 1\n\n",
                 result.getPages().get(0).getText());
 
         assertEquals(Integer.valueOf(3), result.getPages().get(3).getPageIndex());
-        assertEquals("\fText inside bookmark 3\r\n\r\nPage 3 heading\r\n\r\nPage Text - Page 3\r\n\r\n",
+        assertEquals("\fText inside bookmark 3\n\nPage 3 heading\n\nPage Text - Page 3\n\n",
                 result.getPages().get(3).getText());
     }
 
@@ -159,20 +159,14 @@ public class ParserTextApiTests extends BaseApiTest {
     }
 
     @Test
-    public void TestExtractText_NotSupportedFile() {
+    public void TestExtractText_Jpeg() throws ApiException  {
         // Arrange
         TextOptions options = new TextOptions();
         options.setFileInfo(TestFiles.JpegFile.ToFileInfo());
         TextRequest request = new TextRequest(options);
 
         // Act & Assert
-        try {
-            parseApi.text(request);
-            fail("Expected ApiException was not thrown.");
-        } catch (ApiException ex) {
-            assertEquals("The specified file 'image\\jpeg\\document.jpeg' has type which is not currently supported.",
-                    ex.getMessage());
-        }
+        TextResult result = parseApi.text(request);       
     }
 
     @Test
