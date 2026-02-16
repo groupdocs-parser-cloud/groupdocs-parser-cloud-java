@@ -149,7 +149,7 @@ public class ParserImageApiTests extends BaseApiTest {
             parseApi.images(request);
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
-            assertEquals("The specified file 'containers\\archive\\docx.zip' has type which is not currently supported.", ex.getMessage());
+            assertEquals("The specified file 'containers/archive/docx.zip' has type which is not currently supported.", ex.getMessage());
         }
     }
 
@@ -201,7 +201,7 @@ public class ParserImageApiTests extends BaseApiTest {
             parseApi.images(request);
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
-            assertEquals("Password provided for file 'words\\docx\\password-protected.docx' is incorrect.",
+            assertEquals("Password provided for file 'words/docx/password-protected.docx' is incorrect.",
                     ex.getMessage());
         }
     }

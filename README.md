@@ -24,7 +24,7 @@ Add following repository and dependency to your project's POM
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-parser-cloud</artifactId>
-    <version>25.9</version>
+    <version>26.2</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -43,7 +43,7 @@ repositories {
 ...
 dependencies {
     ...
-    implementation 'com.groupdocs:groupdocs-parser-cloud:25.9'
+    implementation 'com.groupdocs:groupdocs-parser-cloud:26.2'
 }
 ```
 
@@ -94,7 +94,7 @@ mvn package -D maven.test.skip=true
 
 Then manually install the following JARs:
 
-* target/groupdocs-parser-cloud-25.9.jar
+* target/groupdocs-parser-cloud-26.2.jar
 * target/lib/*.jar
 
 ## Licensing

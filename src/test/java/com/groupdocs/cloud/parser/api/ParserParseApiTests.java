@@ -40,6 +40,60 @@ import org.junit.Test;
 
 public class ParserParseApiTests extends BaseApiTest {
 
+    // Helper class for AIParse template
+    public static class AIParseTemplate {
+        private String InvoiceNum;
+        private String Date;
+        private String Email;
+
+        public AIParseTemplate() {
+            this.InvoiceNum = "";
+            this.Date = "";
+            this.Email = "";
+        }
+
+        public String getInvoiceNum() { return InvoiceNum; }
+        public void setInvoiceNum(String invoiceNum) { this.InvoiceNum = invoiceNum; }
+
+        public String getDate() { return Date; }
+        public void setDate(String date) { this.Date = date; }
+
+        public String getEmail() { return Email; }
+        public void setEmail(String email) { this.Email = email; }
+    }
+
+    @Test
+    public void TestAIParse() throws ApiException {
+        // Arrange
+        FileInfo testFile = TestFiles.Invoice.ToFileInfo();
+        AIParseOptions options = new AIParseOptions();
+        options.setFileInfo(testFile);
+        AIParseTemplate template = new AIParseTemplate();
+        options.setTemplate(template);
+        AIParseRequest request = new AIParseRequest(options);
+
+        // Act
+        Object result = parseApi.aIParse(request);
+
+        // Assert
+        assertNotNull(result);
+        // The result is expected to be a map or a POJO with InvoiceNum property
+        String invoiceNum = null;
+        if (result instanceof java.util.Map) {
+            Object value = ((java.util.Map<?,?>) result).get("InvoiceNum");
+            if (value != null) invoiceNum = value.toString();
+        } else {
+            try {
+                java.lang.reflect.Method m = result.getClass().getMethod("getInvoiceNum");
+                Object value = m.invoke(result);
+                if (value != null) invoiceNum = value.toString();
+            } catch (Exception e) {
+                // ignore
+            }
+        }
+        assertNotNull(invoiceNum);
+    }
+
     @Test
     public void TestParseDocument() throws ApiException {
         // Arrange
@@ -124,7 +178,7 @@ public class ParserParseApiTests extends BaseApiTest {
             parseApi.parse(request);
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
-            assertEquals("Password provided for file 'words\\docx\\password-protected.docx' is incorrect.",
+            assertEquals("Password provided for file 'words/docx/password-protected.docx' is incorrect.",
                     ex.getMessage());
         }
     }

@@ -115,7 +115,7 @@ public class ParserInfoApiTests extends BaseApiTest {
             infoApi.getInfo(request);
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
-            assertEquals("Password provided for file 'words\\docx\\password-protected.docx' is incorrect.",
+            assertEquals("Password provided for file 'words/docx/password-protected.docx' is incorrect.",
                     ex.getMessage());
         }
     }
